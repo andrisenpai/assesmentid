@@ -21,7 +21,7 @@
             <!-- Tab Content Start -->
             <div class="tab-content swiper-arrow-hover" data-aos="fade-up" data-aos-delay="400">
                 <div class="tab-pane fade" :class="{ 'active show': isActive('architecture') }" id="architecture">
-                    <swiper :speed="1000" :loop="false" :navigation="swiperOptions.navigation"
+                    <swiper :speed="1000" :loop="false" :navigation="true"
                         :breakpoints="swiperOptions.breakpoints" :pagination="{
                             clickable: true,
                         }">
