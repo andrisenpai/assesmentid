@@ -39,8 +39,8 @@ export default {
                 addProduct,
                 productList,
              } = productStore
-            
-             const {
+            console.log(productList)
+             const {    
                 addArticle, articleList, 
             } = articleStore
             
@@ -115,7 +115,6 @@ export default {
             
             const orders = [] as any[]
             const ordersFetched = data.value.attributes.order
-            console.log(orders)
             ordersFetched.forEach((value : any) => {
                 orders.push(
                     {
@@ -149,7 +148,6 @@ export default {
                     imageUrl : config.public.clientCmsBaseUrl +  value.imgSrc.data.attributes.url
                 })
             })
-
             const articleTitle = data.value.attributes.article_section_title
             const articleSubtitle = data.value.attributes.article_section_subtitle
             const featureTitle = data.value.attributes.feature.section_title

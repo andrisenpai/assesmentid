@@ -28,7 +28,7 @@
                                     disableOnInteraction: false,
                                     
                                 }"
-                                :navigation="swiperOptions.navigation"
+                                :navigation="true"
                                 :breakpoints="{
                                     320: {
                                         slidesPerView: 1,
@@ -87,7 +87,8 @@
     import 'swiper/css';
     import 'swiper/css/grid';
     import 'swiper/css/pagination';
-    import { Grid, Pagination } from 'swiper';
+    import 'swiper/css/navigation';
+    import { Grid, Pagination, Navigation } from 'swiper';
 
     export default {
         props : ["featureProps", "title"],
@@ -107,7 +108,7 @@
         },
         setup() {
             return {
-                modules: [Grid, Pagination],
+                modules: [Grid, Pagination, Navigation],
             };
         },
     };

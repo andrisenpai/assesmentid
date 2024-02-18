@@ -2,7 +2,7 @@
 
 .swiper-button-next, .swiper-button-prev {
     position: absolute;
-    top: -5%;
+    top: 46%!important;
     width: calc(var(--swiper-navigation-size)/ 44 * 27);
     height: var(--swiper-navigation-size);
     z-index: 10;
@@ -11,15 +11,17 @@
     align-items: center;
     justify-content: center;
     color: white !important;
-    background-color: rgba(0, 0, 0, 0.407);
+    background-color: $primarylight2;
     border: none;
     padding:10px 22px;
     border-radius: 25px;
     height: 100%;
     transition: $transition-base;
-
+    &.swiper-button-disabled{
+        display: none;
+    }
     &:hover {
-        background-color: rgba(0, 0, 0, 0.536);
+        background-color: $primary2;
     }
 }
 
