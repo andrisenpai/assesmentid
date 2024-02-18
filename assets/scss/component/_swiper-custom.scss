@@ -1,0 +1,45 @@
+@import "swiper/css";
+
+.swiper-button-next, .swiper-button-prev {
+    position: absolute;
+    top: -5%;
+    width: calc(var(--swiper-navigation-size)/ 44 * 27);
+    height: var(--swiper-navigation-size);
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white !important;
+    background-color: rgba(0, 0, 0, 0.407);
+    border: none;
+    padding:10px 22px;
+    border-radius: 25px;
+    height: 100%;
+    transition: $transition-base;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.536);
+    }
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size : 20px !important;
+    font-weight: 800 !important;
+}
+
+.swiper-button-next:after{
+    position: relative;
+    left: 1px;
+}
+
+.swiper-button-prev:after{
+    position: relative;
+    right: 1px;
+}
+
+
+.slider-container .swiper-button-next, 
+.slider-container .swiper-button-prev {
+    top: 46% !important;
+}

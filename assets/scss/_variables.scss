@@ -1,0 +1,151 @@
+// Font Family
+$font-family-base: "Poppins", sans-serif;
+$heading-font: "Poppins", sans-serif;
+
+// Icon Font
+
+
+
+// Colors ---------------
+
+$primary: #197D7F;
+$primary2: #197D7F;
+$primarylight: #BDE6E7;
+$lighten-primary: #BDE6E7;
+$paragraph: #666;
+$body-bg: #000;
+$body-color: #748494;
+$body-bg: white;
+$heading-color: #030f27;
+$primary-two: #5aa6a7;
+$primary-three: #ef6f31;
+$secondary: #748494;
+$secondary-light: #8C89A2;
+$secondary-three: #6ac5f1;
+$success: #67d68a;
+$danger: #F44336;
+$warning: #FFC107;
+$info: #17A2B8;
+$light: #F8F9FA;
+$off-white: #f6f2ed;
+$white-gray: #f2f2f2;
+$white-light: #cacaca;
+$white: #fff;
+$black: #212121;
+$dark: #000;
+$glaucous: #4C76B2ff;
+$verdigris: #54A4A5ff;
+$nyanza: #D9E9CEff;
+$carrot-orange: #EB9318ff;
+
+// Gray
+$gray-100: #EfEfEf;
+$gray-200: #E6E6E6;
+$gray-300: #666666;
+$gray-400: #999999;
+$gray-600: #6C757D;
+$gray-800: #212121;
+
+
+// Border Color
+$border-color: #F3F3F3;
+
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"success": $success,
+	"info": $info,
+	"warning": $warning,
+	"danger": $danger,
+	"light": $light,
+	"dark": $dark,
+);
+
+// Default Transition
+$transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+$transition-base: all 0.3s ease 0s;
+
+// Social Color
+$android: #7AC157;
+$apple: #B8B8B8;
+$behance: #1869FF;
+$dribbble: #EA4C8A;
+$dropbox: #007EE5;
+$evernote: #78D525;
+$facebook: #4867AA;
+$github: #313131;
+$google-drive: #1DA462;
+$google-earth: #4285F4;
+$google-glass: #EA4335;
+$google-maps: #5083C3;
+$google-play: #01B9FD;
+$google-plus: #DD5144;
+$google: #4285F4;
+$instagram: #B23A94;
+$css3: #0277BD;
+$html5: #E44D26;
+$javascript: #F9DC3D;
+$python: #0C9DBF;
+$lastfm: #E31B23;
+$linkedin: #007BB6;
+$paypal: #002F86;
+$pinterest: #BD081B;
+$pocket: #EF3E56;
+$polymer: #F87292;
+$rss: #F99C3A;
+$share: #2C9CFF;
+$stackoverflow: #F38024;
+$steam: #15497B;
+$twitter: #1DA1F2;
+$vk: #5181B8;
+$wikipedia: #E9E9E9;
+$windows: #0078D6;
+$s8tracks: #122D4B;
+$amazon: #F79B34;
+$blogger: #F06A35;
+$delicious: #0000FE;
+$disqus: #2E9EFE;
+$flattr: #7AB831;
+$flickr: #FE0084;
+$odnoklassniki: #F58220;
+$outlook: #0072C6;
+$playstation: #07418E;
+$reddit: #FF4500;
+$skype: #00A9F0;
+$slideshare: #0077B5;
+$soundcloud: #FE4900;
+$tumblr: #36465D;
+$twitch: #6441A4;
+$vimeo: #1AB7EA;
+$whatsapp: #189D0E;
+$xbox: #107C0F;
+$yahoo: #4101AF;
+$youtube: #FE0000;
+$line: #0dc300;
+
+// Responsive Variables
+$extraBig-device: "only screen and (min-width: 1600px)";
+$laptop-device: "only screen and (min-width: 1200px) and (max-width: 1599px)";
+$desktop-device: "only screen and (min-width: 992px) and (max-width: 1199px)";
+$tablet-device: "only screen and (min-width: 768px) and (max-width: 991px)";
+$large-mobile: "only screen and (max-width: 767px)";
+$small-mobile: "only screen and (max-width: 575px)";
+$extra-small-mobile: "only screen and (max-width: 479px)";
+$xl-down : "only screen and (max-width: 1200px)";
+$lg-down : "only screen and (max-width: 991px)";
+
+//base of BS4 breakpoints
+$screen-xs: 0;
+$xs: $screen-xs;
+$screen-sm: 576px;
+$sm: $screen-sm;
+$screen-md: 768px;
+$md: $screen-md;
+$screen-lg: 992px;
+$lg: $screen-lg;
+$screen-xl: 1200px;
+$xl: $screen-xl;
+$screen-xxl: 1600px;
+$xxl: $screen-xxl;

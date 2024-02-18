@@ -1,0 +1,82 @@
+/*====================  
+    4.9 Team CSS
+====================*/
+.team-block{
+    & .inner-box {
+        & .image{
+            position:relative;
+            border-radius:3px;
+            overflow:hidden;
+
+            & img{
+                width:100%;
+                transition: $transition-base;
+            }
+
+            & .social-icons{
+                position:absolute;
+                right:-250px;
+                bottom:10px;
+                padding:10px 20px 8px;
+                background-color: $white;
+                transition:all 600ms ease;
+
+                & li{
+                    position:relative;
+                    margin-right:15px;
+                    display:inline-block;
+
+                    &:last-child {
+                        margin-right: 0px;
+                    }
+
+                    & a{
+                        position:relative;
+                        color:$paragraph;
+                        font-size:16px;
+                        transition:all 300ms ease;
+
+                        &:hover {
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            & .image {
+                & img {
+                    transform: scale(1.1) rotate(1deg);
+                }
+
+                & .social-icons{
+                    right: 0px;
+                }
+            }
+
+            & .team-content {
+                & .title {
+                    color: $primary;
+                }
+            }
+        }
+
+        & .team-content {
+            padding:25px 0px 0px;
+
+            & .title {
+                font-weight:600;
+                line-height:1.3em;
+                color:$dark;
+                transition:all 300ms ease;
+            }
+
+            & .subtitle {
+                color: $paragraph;
+                font-size:14px;
+                margin-top:6px;
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  nuxt:
+    build:
+      context: .
+    image: nuxt_dev
+    container_name: nuxt_dev
+    command: npm run dev
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+    - .:/app
+    ports:
+      - "3001:3000"
+      - "24678:24678"
+      - "4000:4000"
+    networks:
+      - Strapi
+
+networks:
+  Strapi:
+    external: true
