@@ -20,15 +20,6 @@
             const id = parseInt(product_id)
             const url = `/api/servicePrice?id=${id-1}`
             
-            try {
-                const page = parseInt(id)
-                if(page > 4){
-                    throw createError({statusCode: 404, statusMessage: "[PRODUCT-ID/ID] : page not found"})
-                }
-            } catch (error) {
-                throw createError({statusCode: 404, statusMessage: "[PRODUCT-ID/ID] : page not found"})
-            }
-            
             const [
                 {data : priceItem, pending: pendingPriceItem},
                 {data : addOnsItem, pending : pendingAddOn},

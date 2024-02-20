@@ -1,9 +1,9 @@
 <template>
     <div id="orderSection" class="bg-white section-container">
-        <div class="container section-wrapper" data-aos="fade-up" data-aos-delay="500">
+        <div class="container-fluid section-wrapper" data-aos="fade-up" data-aos-delay="500">
             <div class="section-text mb-50">
                 <h2 class="title mb-20" data-aos="fade-up text-center" data-aos-delay="500">{{ title }}</h2>
-                <p class="subtitle-order ">{{ subtitle }}</p>
+                <p class="subtitle-order text-center">{{ subtitle }}</p>
             </div>
             <div class="row justify-content-md-between justify-content-center align-items center">
                 <div class="card-wrapper col-12 col-md-6 col-lg-6 col-xl-4 mb-30" v-for="orderItem in orders" :key="x">

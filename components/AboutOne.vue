@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="wrapper-fluid section-padding-top section-padding-bottom row justify-content-center align-items-center">
             <div class="container-fluid about-one-container">
                 <div class="row">
@@ -65,8 +65,7 @@ export default {
 }
 
 .about-one-container {
-    height: 90vh;
-
+    height: 80vh;
     @media #{$lg-down} {
         height: fit-content;
     }

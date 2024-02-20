@@ -1,5 +1,5 @@
 <template>
-    <div class="section-padding-top bg-white">
+    <div class="section-padding-top bg-white gallery-one">
         <div class="container">
             <div class="row justify-content-between align-items-center mb-5" data-aos="fade-up" data-aos-delay="300">
                 <!-- Section Title Start -->
@@ -21,7 +21,7 @@
             <!-- Tab Content Start -->
             <div class="tab-content swiper-arrow-hover" data-aos="fade-up" data-aos-delay="400">
                 <div class="tab-pane fade" :class="{ 'active show': isActive('architecture') }" id="architecture">
-                    <swiper :speed="1000" :loop="false" :navigation="true"
+                    <swiper :speed="1000" :loop="false" :navigation="swiperOptions.navigation"
                         :breakpoints="swiperOptions.breakpoints" :pagination="{
                             clickable: true,
                         }">
@@ -43,12 +43,8 @@
                     </swiper>
 
                     <!-- Swiper Navigation Start -->
-                    <div class="tab-carousel-prev tab-carousel-btn">
-                        <i class="icofont-thin-left"></i>
-                    </div>
-                    <div class="tab-carousel-next tab-carousel-btn">
-                        <i class="icofont-thin-right"></i>
-                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                     <!-- Swiper Navigation End -->
                 </div>
             </div>
@@ -80,8 +76,8 @@ export default {
 
             swiperOptions: {
                 navigation: {
-                    nextEl: '.tab-carousel-next',
-                    prevEl: '.tab-carousel-prev',
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
                 },
 
                 breakpoints: {
@@ -111,3 +107,65 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+.gallery-one {
+    .swiper-grid-column>.swiper-wrapper {
+        flex-direction: row !important;
+    }
+
+    .swiper-wrapper {
+        align-items: end;
+        padding: 0 0 40px;
+    }
+
+    .swiper-button-next {
+        top: 48% !important;
+        border-radius: 50%;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        z-index: 9999 !important;
+        background-color: $primarylight;
+        transition: 0.3s;
+        &:hover{
+            background-color: $primarylight2;
+            transition: 0.3s;
+        }
+    }
+
+    .swiper-button-prev {
+        top: 48% !important;
+        border-radius: 50%;
+        width: 60px;
+        left: 20px;
+        height: 60px;
+        z-index: 9999 !important;
+        background-color: $primarylight;
+        transition: 0.3s;
+        &:hover{
+            background-color: $primarylight2;
+            transition: 0.3s;
+        }
+    }
+
+    /*-- Tab Pane Carousel Style --*/
+
+    .swiper-pagination {
+        position: absolute;
+        text-align: center;
+        transition: .3s opacity;
+        transform: translate3d(0, 0, 0);
+        z-index: 9999999999999999;
+    }
+
+    .swiper-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal,
+    .swiper-pagination-custom,
+    .swiper-pagination-fraction {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+</style>

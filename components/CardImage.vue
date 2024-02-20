@@ -7,8 +7,8 @@
                 </div>
                 <div class="text-wrapper">
                     <h4 class="card-ls-title">{{ order.title }}</h4>
-                    <p class="text-center small">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam officia porro voluptatem minima similique rerum quasi, magni in ab rem nulla, libero explicabo. Rem accusamus eaque dolore consequuntur ab illo.</p>
-                    <a class="card-ls-link" :href="`${order.link}`" target="_blank">{{ order.text }}</a>    
+                    <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo at accusantium reiciendis facilis temporibus suscipit architecto sapiente magnam numquam quaerat esse mollitia consequatur eius quod quidem ad, laborum nulla omnis?</p>
+                    <a class="card-ls-link text-capitalize" :href="`${order.link}`" target="_blank">{{ order.text }}</a>    
                 </div>
                 
             </div>
@@ -29,7 +29,7 @@
     height: fit-content;
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     width: 100%;
-    max-width: 400px;
+    // max-width: 400px;
     padding:0px 0px 20px 0px;
     transition: $transition-base;
     margin: 0 auto;
@@ -67,7 +67,7 @@
 
         .card-ls-link {
             width: fit-content;
-            padding: 5px 20px;
+            padding: 10px 30px;
             background-color: $primary;
             color: white;
             border-radius: 5px;
