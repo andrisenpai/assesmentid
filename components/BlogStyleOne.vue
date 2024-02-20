@@ -24,6 +24,9 @@
                 :navigation="swiperOptions.navigation"
                 :breakpoints="swiperOptions.breakpoints"
                 class="row g-0"
+                :pagination="{
+                    clickable: true,
+                }"
             >
                 <swiper-slide class="col-xl-3 col-md-6">
                     <div data-aos="fade-up" data-aos-delay="300">
@@ -51,8 +54,8 @@
 
 <script>
     import { Swiper, SwiperSlide } from "swiper/vue"
-    import SwiperCore, { Navigation } from 'swiper/core'
-    SwiperCore.use([Navigation ])
+    import SwiperCore, { Navigation, Pagination } from 'swiper/core'
+    SwiperCore.use([Navigation, Pagination ])
 
     import "swiper/css"
 

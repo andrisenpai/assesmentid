@@ -10,7 +10,7 @@
                 <Features :featureProps="features" :title="featureTitle" />
                 <GalleryOne :title="productTitle" :subtitle="productSubtitle" :products="productList" />
                 <Order :orders="orders" :title="orderTitle" :subtitle="orderSubtitle" />
-                <BlogStyleOne :blogs="articleList" :title="articleTitle" :subtitle="articleSubtitle" />
+                <BlogStyleOne :blogs="articleProps" :title="articleTitle" :subtitle="articleSubtitle" />
                 <FooterNew />
                 <FooterSimple />
             </div>
@@ -55,7 +55,7 @@ export default {
             useFetch('/api/home', {
                 params: { locale: `${language}` }
             }),
-            useFetch('/api/articles?sort=publishedAt%3Aasc&pagination[page]=1&pagination[pageSize]=4&populate=deep,2'),
+            useFetch('/api/articles?sort=publishedAt%3Aasc&pagination[page]=1&pagination[pageSize]=8&populate=deep,2'),
         ])
 
         footerStore.$patch({
@@ -120,12 +120,12 @@ export default {
             )
         })
 
-        const articleList = [] as any[]
+        const articleProps = [] as any[]
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         
         articlesItem.value.articleList.forEach((value: any) => {
-            articleList.push({
+            articleProps.push({
                 id: value.id,
                 title: value.attributes.title,
                 category: value.attributes?.article_category.data.attributes.title,
@@ -155,7 +155,7 @@ export default {
             footers,
             aboutData,
             features,
-            articleList,
+            articleProps,
             articleTitle,
             articleSubtitle,
             featureTitle,
