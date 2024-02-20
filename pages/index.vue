@@ -32,16 +32,11 @@ export default {
             language,
         } = useNavigationStore()
 
-        const articleStore = useArticleStore()
-        const productStore = useProductStore()
+        // const articleStore = useArticleStore()
 
-        const {
-            addProduct, productList,
-        } = productStore
-
-        const {
-            addArticle, articleList,
-        } = articleStore
+        // const {
+        //     addArticle, articleList,
+        // } = articleStore
 
         const footers = footerStore.$state
         const aboutData = aboutStore.$state
@@ -125,11 +120,12 @@ export default {
             )
         })
 
-
+        const articleList = [] as any[]
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
+        
         articlesItem.value.articleList.forEach((value: any) => {
-            addArticle({
+            articleList.push({
                 id: value.id,
                 title: value.attributes.title,
                 category: value.attributes?.article_category.data.attributes.title,
@@ -138,10 +134,10 @@ export default {
                 slug: value.attributes.slug
             })
         })
-
+        const productList = [] as any[]
         const productFethed = data.value.attributes.product
         productFethed.products.forEach((value: any) => {
-            addProduct({
+            productList.push({
                 title: value.title,
                 subtitle: value.subtitle,
                 imageUrl: config.public.clientCmsBaseUrl + value.imgSrc.data.attributes.url

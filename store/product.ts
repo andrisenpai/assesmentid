@@ -14,6 +14,9 @@ export const useProductStore = defineStore('productStore', {
         addProduct(value : ProductIndexType){
             this.products.push(value)
         },
+        resetProduct(){
+            this.products = [] as ProductIndexType[];
+        },
         setValue(key : any,value : string){
             switch (key) {
                 case 'sectionTitle':
