@@ -1,13 +1,13 @@
 <template>
-    <div class="section-padding-bottom" data-aos="fade-up" data-aos-delay="600">
-        <div class="container">
+    <div class="section-padding-bottom card-price mx-5" data-aos="fade-up" data-aos-delay="600">
+        <div class="container-fluid">
             <div class="row justify-content-center align-items-center">
-                <swiper :speed="1000" :loop="false" :navigation="true" :breakpoints="swiperOptions.breakpoints" :pagination="{
-                    clickable: true,
-                }">
+                <swiper :speed="1000" :loop="false" :navigation="swiperOptions.navigation"
+                    :breakpoints="swiperOptions.breakpoints">
                     <swiper-slide class="card-container my-2 rounded" v-for="product in products">
                         <div :class="['card', product.id == 1 ? 'populer' : '']">
                             <div class="card-body">
+                                <div class="newlabel" v-show="product.id == 3">Baru</div>
                                 <h5 id="cardPriceTitle" class="card-price-title text-center mt-3 fw-bolder">{{ product.name
                                 }}</h5>
                                 <div class="row justify-content-center align-items-center mb-5">
@@ -18,12 +18,14 @@
                                 </div>
                                 <div class="d-grid">
                                     <nuxt-link :to="`/products/product-${product.id}/${product.id}`"
-                                        class="btn btn-block rounded" type="submit">{{ btnWord }}</nuxt-link>
+                                        class="btn btn-block rounded text-dark text-capitalize" type="submit">{{ btnWord }}</nuxt-link>
                                 </div>
                             </div>
                         </div>
                     </swiper-slide>
                 </swiper>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </div>
@@ -48,8 +50,8 @@ export default {
 
             swiperOptions: {
                 navigation: {
-                    nextEl: '.tab-carousel-next',
-                    prevEl: '.tab-carousel-prev',
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
                 },
 
                 breakpoints: {
@@ -97,11 +99,51 @@ export default {
     height: 100px;
 }
 
+.card-price {
+    .swiper-button-next {
+        top: 35% !important;
+        border-radius: 50%;
+        right: -25px;
+        width: 60px;
+        height: 60px;
+        z-index: 9999 !important;
+    }
+
+    .swiper-button-prev {
+        top: 35% !important;
+        border-radius: 50%;
+        left: -25px;
+        width: 60px;
+        height: 60px;
+        z-index: 9999 !important;
+    }
+}
+
 .display-block {
     display: block;
 }
 
 .card-container {
     margin: 0px;
-}
-</style>
+
+    .card {
+        margin: 30px 20px;
+    }
+
+    .card-body {
+        position: relative;
+
+        .newlabel {
+            position: absolute;
+            top: -45px;
+            right: -45px;
+            width: 72px;
+            height: 72px;
+            border-radius: 36px;
+            color: #fff;
+            line-height: 72px;
+            text-align: center;
+            background: orange
+        }
+    }
+}</style>

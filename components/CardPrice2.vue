@@ -1,6 +1,6 @@
 <template>
     <div class="section-padding-bottom" data-aos="fade-up" data-aos-delay="600">
-        <div class="container section-container-price">
+        <div class="container-fluid section-container-price">
             <div class="row justify-content-center align-items-center">
                 <div class="" v-for="product in products">
                     <div :class="['card', product.id == 1 ? 'populer' : '']">
