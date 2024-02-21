@@ -1,12 +1,12 @@
 <template>
     <div class="hero-slider">
-        <swiper :speed="500" :loop="true" :navigation="true" :pagination="{ clickable: true }"
-            :effect="'fade'" :autoplay="width < 992 ? false : autoplayConfig"
-            :disableOnInteraction="width < 992 ? true : false" :modules="modules">
+        <swiper :speed="500" :loop="true" :navigation="true" :pagination="{ clickable: true }" :effect="'fade'"
+            :autoplay="width < 992 ? false : autoplayConfig" :disableOnInteraction="width < 992 ? true : false"
+            :modules="modules">
             <template v-for="(hero, index) in heros" :key="index">
                 <swiper-slide class="slides" v-if="index < 3">
-                    <div v-if="!hero.price" class="hero-slide-item" :style="{ backgroundImage: `url('${hero.background}')` }"
-                        :data-id="hero.id">
+                    <div v-if="!hero.price" class="hero-slide-item"
+                        :style="{ backgroundImage: `url('${hero.background}')` }" :data-id="hero.id">
                         <!-- <div class="container">
                             <div class="row justify-content-xl-end justify-content-start hero-slide-container ">
                                 <div class="col-12 col-md-6 hero-slide-wrapper">
@@ -148,7 +148,25 @@ export default {
     visibility: hidden;
 }
 
+.hero-slider {
+    .swiper-button-next {
+        top: 48% !important;
+        border-radius: 50%;
+        right: 10px;
+        width: 60px;
+        height: 60px;
+        z-index: 9999 !important;
+    }
 
+    .swiper-button-prev {
+        top: 48% !important;
+        border-radius: 50%;
+        width: 60px;
+        left: 10px;
+        height: 60px;
+        z-index: 9999 !important;
+    }
+}
 
 .hero-pagination {
     bottom: 70px !important;
