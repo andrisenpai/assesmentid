@@ -1,22 +1,13 @@
 <template>
     <div class="hero-slider">
-        <swiper
-            :speed="500"
-            :loop="true"
-            :navigation="swiperOptions.navigation"
-            :pagination="swiperOptions.pagination"
-            :effect="'fade'"
-            :autoplay="width < 992 ? false : autoplayConfig"
-            :disableOnInteraction="width < 992 ? true : false"
-            :modules="modules"
-        >
+        <swiper :speed="500" :loop="true" :navigation="true" :pagination="{ clickable: true }"
+            :effect="'fade'" :autoplay="width < 992 ? false : autoplayConfig"
+            :disableOnInteraction="width < 992 ? true : false" :modules="modules">
             <template v-for="(hero, index) in heros" :key="index">
                 <swiper-slide class="slides" v-if="index < 3">
-                    <div v-if="!hero.price" class="hero-slide-item" 
-                        :style="{backgroundImage: `url('${hero.background}')`}"
-                        :data-id="hero.id"
-                        >
-                        <div class="container">
+                    <div v-if="!hero.price" class="hero-slide-item" :style="{ backgroundImage: `url('${hero.background}')` }"
+                        :data-id="hero.id">
+                        <!-- <div class="container">
                             <div class="row justify-content-xl-end justify-content-start hero-slide-container ">
                                 <div class="col-12 col-md-6 hero-slide-wrapper">
                                     <div class="hero-slide-content">
@@ -26,21 +17,19 @@
                                 </div>
                             </div>
                             <img v-if="hero.id === 1" class="img-util" src="/images/utils/Shape-banner-homepage.svg" alt="">
-                        </div>
+                        </div> -->
                     </div>
-                    <div v-else-if="hero.price.length" class="hero-slide-item invisible-content" 
-                    :class="hero.price.length && hero.points.length ? 'slide-2' : 'slide-3'" 
-                        :style="{backgroundImage: `url('${hero.background}')`}"
-                        :data-id="hero.id"
-                        >
+                    <div v-else-if="hero.price.length" class="hero-slide-item invisible-content"
+                        :class="hero.price.length && hero.points.length ? 'slide-2' : 'slide-3'"
+                        :style="{ backgroundImage: `url('${hero.background}')` }" :data-id="hero.id">
                         <div class="container">
                             <div class="hero-slide-content">
-                                <h1 class="hero-title">{{ hero.title_1 }}
+                                <!-- <h1 class="hero-title">{{ hero.title_1 }}
                                     <br v-if="!(hero.price.length && hero.points.length)"/>
                                     <span>{{ hero.title_2 }}</span>
-                                </h1>
-                                
-                                <div class="row justify-content-between align-items-center content-wrapper">
+                                </h1> -->
+
+                                <!-- <div class="row justify-content-between align-items-center content-wrapper">
                                     <div class="col-lg-8 col-12 left">
                                         <h3 class="price-word-text">{{ hero.subtitle }}</h3>
                                         <h2 class="price-text">{{ hero.price }}<span class="kilo">{{ hero.currency }}</span></h2>
@@ -67,7 +56,7 @@
                                             <div v-else :id="`point-${index + 1}`" class="wrapper-point"><span class="point-text">{{ point.main_point }}</span></div>
                                         </template>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -76,97 +65,94 @@
         </swiper>
 
         <!-- Swiper Pagination Start -->
-        <div class="hero-pagination swiper-pagination d-flex d-md-none"></div>
+        <!-- <div class="hero-pagination swiper-pagination d-flex d-md-none"></div> -->
         <!-- Swiper Pagination End -->
 
         <!-- Swiper Navigation Start -->
-        <div class="home-slider-prev swiper-button-prev d-md-flex d-none">
+        <!-- <div class="home-slider-prev swiper-button-prev d-md-flex d-none">
             <i class="icofont-long-arrow-left"></i>
         </div>
         <div class="home-slider-next swiper-button-next d-md-flex d-none">
             <i class="icofont-long-arrow-right"></i>
-        </div>
+        </div> -->
         <!-- Swiper Navigation End -->
     </div>
 </template>
 
 <script lang="js">
-    import { Swiper, SwiperSlide, useSwiper } from "swiper/vue"
-    import SwiperCore, { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/core'
-    SwiperCore.use([Navigation, Pagination, EffectFade ])
+import { Swiper, SwiperSlide, useSwiper } from "swiper/vue"
+import SwiperCore, { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/core'
+SwiperCore.use([Navigation, Pagination, EffectFade])
 
-    import "swiper/css"
-    import 'swiper/css/effect-fade';
+import "swiper/css"
+import 'swiper/css/effect-fade';
 
-    export default {
-        components: {
-            Swiper,
-            SwiperSlide,
-        },
-        props: [
-            "heros"
-        ],
-        setup(){
-            const swiper = useSwiper();
+export default {
+    components: {
+        Swiper,
+        SwiperSlide,
+    },
+    props: [
+        "heros"
+    ],
+    setup() {
+        const swiper = useSwiper();
 
-            const width = ref(window.innerWidth)
-            let autoplayConfig = {
-                delay: 7000,
-                disableOnInteraction: true,
-            }
-            
-            if(width < 992){
-                autoplayConfig = false
-            }
-
-            return {
-                modules: [Autoplay, Pagination, Navigation],
-                swiper,
-                autoplayConfig, width
-            };
-        },
-        data() {
-            const preventSwipe = ref(false)
-
-            return {
-                swiperOptions: {
-                    navigation: {
-                        nextEl: '.hero-slider .home-slider-next',
-                        prevEl: '.hero-slider .home-slider-prev'
-                    },
-                    pagination: {
-                        el: '.hero-slider .swiper-pagination',
-                        type: 'bullets',
-                        clickable: 'true'
-                    },
-                },
-                preventSwipe,
-            }
-        },
-        mounted(){
-            const invisibleContent = document.querySelectorAll('.invisible-content')
-            setTimeout(()=> {
-                invisibleContent.forEach(element => {
-                    element.classList.toggle('invisible-content')
-                })  
-            }, 3000)  
+        const width = ref(window.innerWidth)
+        let autoplayConfig = {
+            delay: 7000,
+            disableOnInteraction: true,
         }
-    };
+
+        if (width < 992) {
+            autoplayConfig = false
+        }
+
+        return {
+            modules: [Autoplay, Pagination, Navigation],
+            swiper,
+            autoplayConfig, width
+        };
+    },
+    data() {
+        const preventSwipe = ref(false)
+
+        return {
+            swiperOptions: {
+                navigation: {
+                    nextEl: '.hero-slider .home-slider-next',
+                    prevEl: '.hero-slider .home-slider-prev'
+                },
+                pagination: {
+                    el: '.hero-slider .swiper-pagination',
+                    type: 'bullets',
+                    clickable: 'true'
+                },
+            },
+            preventSwipe,
+        }
+    },
+    mounted() {
+        const invisibleContent = document.querySelectorAll('.invisible-content')
+        setTimeout(() => {
+            invisibleContent.forEach(element => {
+                element.classList.toggle('invisible-content')
+            })
+        }, 3000)
+    }
+};
 </script>
 
 <style lang="scss">
-
 .invisible-content {
     visibility: hidden;
 }
 
-.hero-slider .swiper-button-prev:after,
-.hero-slider .swiper-button-next:after{
-    display: none;
-}
+
 
 .hero-pagination {
     bottom: 70px !important;
+
     @media #{$large-mobile} {
         display: none;
     }
@@ -180,11 +166,11 @@
         background-position-x: -10rem;
     }
 
-    @media #{$large-mobile}{
+    @media #{$large-mobile} {
         background-position-x: -25rem;
     }
 
-    @media #{$small-mobile}{
+    @media #{$small-mobile} {
         background-position-x: -33rem;
     }
 
@@ -212,34 +198,34 @@
     }
 }
 
-.slide-2  {
+.slide-2 {
     background-size: cover;
     background-repeat: no-repeat;
 
     @media #{$small-mobile} {
         background-position-x: -10rem !important;
-    }   
+    }
 }
 
 .slide-2 .hero-slide-content {
     padding-left: 0px;
 
-    @media #{$large-mobile, $small-mobile, $tablet-device, $desktop-device}{
-        padding-left: 20px ;
+    @media #{$large-mobile, $small-mobile, $tablet-device, $desktop-device} {
+        padding-left: 20px;
     }
 }
 
 .slide-2 .hero-title {
     font-weight: 800;
-    color : #f9d662;
+    color: #f9d662;
     font-size: 80px;
 
-    @media #{$large-mobile, $small-mobile}{
+    @media #{$large-mobile, $small-mobile} {
         font-size: 50px;
         width: 100%;
     }
 
-    & span{
+    & span {
         font-style: italic;
         color: white;
     }
@@ -252,21 +238,21 @@
         color: white;
         margin-top: 30px;
 
-        @media #{$large-mobile, $small-mobile}{
+        @media #{$large-mobile, $small-mobile} {
             font-size: 24px;
         }
     }
 
-    .price-text{
+    .price-text {
         font-size: 140px;
         font-weight: 800;
         font-style: italic;
-        background: rgb(252,240,194);
-        background: linear-gradient(225deg, rgba(248,219,102,1) 64%, rgba(255,255,255,1) 72%, rgba(252,239,189,1) 82%);
+        background: rgb(252, 240, 194);
+        background: linear-gradient(225deg, rgba(248, 219, 102, 1) 64%, rgba(255, 255, 255, 1) 72%, rgba(252, 239, 189, 1) 82%);
         -webkit-background-clip: text;
         color: transparent;
 
-        @media #{$large-mobile, $small-mobile}{
+        @media #{$large-mobile, $small-mobile} {
             font-size: 120px;
         }
 
@@ -275,24 +261,24 @@
             font-size: 50px;
             font-weight: 800;
 
-            @media #{$large-mobile, $small-mobile}{
+            @media #{$large-mobile, $small-mobile} {
                 font-size: 30px;
             }
         }
     }
 
-    .more-info-text{
+    .more-info-text {
         color: white;
         font-style: italic;
         font-size: 24px;
         font-weight: 600;
 
-        @media #{$large-mobile, $small-mobile}{
+        @media #{$large-mobile, $small-mobile} {
             font-size: 20px;
         }
     }
 
-    .phone-container .phone-text{
+    .phone-container .phone-text {
         background-color: #d3e7e7;
         color: #55a4a5;
         font-weight: 600;
@@ -304,20 +290,20 @@
         box-shadow: 0px 8px 3px -4px #428182;
         height: fit-content;
         transition: $transition-base;
-        
-        &:hover{
+
+        &:hover {
             background-color: #ffffff;
             transform: translateY(-2px);
         }
 
-        @media #{$large-mobile, $small-mobile}{
+        @media #{$large-mobile, $small-mobile} {
             font-size: 15px;
         }
 
-    }    
+    }
 }
 
-#icon-phone{
+#icon-phone {
     position: relative;
     width: 50px;
     height: 50px;
@@ -335,14 +321,14 @@
     position: relative;
 }
 
-.result-container{
+.result-container {
     padding: 5px 10px;
 }
 
-.wrapper-point{
+.wrapper-point {
     width: 80%;
-    background: rgb(250,250,228);
-    background: linear-gradient(123deg, rgba(250,250,228,1) 27%, rgba(230,240,238,1) 82%);
+    background: rgb(250, 250, 228);
+    background: linear-gradient(123deg, rgba(250, 250, 228, 1) 27%, rgba(230, 240, 238, 1) 82%);
     font-size: 16px;
     font-weight: 600;
     font-style: italic;
@@ -350,7 +336,7 @@
     margin: 25px 0px;
     border-radius: 15px;
     box-shadow: -8px 9px 0px -3px #dada1b;
-    
+
     .point-text {
         color: #1a5152;
     }
@@ -367,57 +353,57 @@
     }
 }
 
-#point-1{
+#point-1 {
     transform: translate(-12rem, 5rem);
 
 }
 
-#point-2{
+#point-2 {
     transform: translate(-7rem, 5rem);
 }
 
-#point-3{
+#point-3 {
     transform: translateY(5rem);
 }
 
-.slide-3  {
+.slide-3 {
     background-size: cover;
     background-repeat: no-repeat;
 
     @media #{$small-mobile} {
         background-position-x: -10rem !important;
-    }   
+    }
 }
 
 
 .slide-3 .hero-slide-content {
     padding-left: 0px;
 
-    @media #{$large-mobile, $small-mobile, $tablet-device, $desktop-device}{
-        padding-left: 20px ;
+    @media #{$large-mobile, $small-mobile, $tablet-device, $desktop-device} {
+        padding-left: 20px;
     }
 }
 
 .slide-3 .hero-slide-content {
     padding-left: 0px;
 
-    @media #{$large-mobile, $small-mobile, $tablet-device, $desktop-device}{
-        padding-left: 20px ;
+    @media #{$large-mobile, $small-mobile, $tablet-device, $desktop-device} {
+        padding-left: 20px;
     }
 }
 
 .slide-3 .hero-title {
     font-weight: 800;
-    color : #478d8e;
+    color: #478d8e;
     font-size: 80px;
     font-style: italic;
 
-    @media #{$large-mobile, $small-mobile}{
+    @media #{$large-mobile, $small-mobile} {
         font-size: 50px;
         width: 100%;
     }
 
-    & span{
+    & span {
         font-weight: 400;
         font-style: italic;
         color: #ff9e00;
@@ -432,19 +418,19 @@
         margin-bottom: 0;
         margin-top: 30px;
 
-        @media #{$large-mobile, $small-mobile}{
+        @media #{$large-mobile, $small-mobile} {
             font-size: 18px;
         }
     }
 
-    .price-text{
+    .price-text {
         font-size: 140px;
         font-weight: 800;
         font-style: italic;
-        color:#ff9e00;
+        color: #ff9e00;
         position: relative;
 
-        @media #{$large-mobile, $small-mobile}{
+        @media #{$large-mobile, $small-mobile} {
             font-size: 90px;
         }
 
@@ -459,24 +445,24 @@
             border-radius: 60px;
             transform: translateX(-20px);
 
-            @media #{$large-mobile, $small-mobile}{
+            @media #{$large-mobile, $small-mobile} {
                 font-size: 30px;
             }
         }
     }
 
-    .more-info-text{
+    .more-info-text {
         color: #478d8e;
         font-style: italic;
         font-size: 24px;
         font-weight: 600;
 
-        @media #{$large-mobile, $small-mobile}{
+        @media #{$large-mobile, $small-mobile} {
             font-size: 20px;
         }
     }
 
-    .phone-container .phone-text{
+    .phone-container .phone-text {
         background-color: #ffffff;
         color: #55a4a5;
         font-weight: 600;
@@ -486,17 +472,17 @@
         text-align: center;
         border-radius: 30px;
         box-shadow: 0px 8px 3px -4px rgba(92, 92, 92, 0.5);
-        
-        @media #{$large-mobile, $small-mobile}{
+
+        @media #{$large-mobile, $small-mobile} {
             font-size: 15px;
         }
     }
 
-    .phone-text.icons{
+    .phone-text.icons {
         border-radius: 50px;
         padding: 0;
     }
-    
+
 }
 
 .img-util {
@@ -508,24 +494,24 @@
     z-index: 0;
 
     @media #{$tablet-device, $desktop-device} {
-       left:-5em;
-       bottom: 0;
-       width: 80%;
-       transform: scaleX(-1);
+        left: -5em;
+        bottom: 0;
+        width: 80%;
+        transform: scaleX(-1);
     }
 
-    @media #{$large-mobile}{
-       left:-10em;
-       bottom: 0;
-       width: 80%;
-       transform: scaleX(-1);
+    @media #{$large-mobile} {
+        left: -10em;
+        bottom: 0;
+        width: 80%;
+        transform: scaleX(-1);
     }
 
-    @media #{$small-mobile}{
-       left:-10em;
-       bottom: 0;
-       width: 130%;
-       transform: scaleX(-1);
+    @media #{$small-mobile} {
+        left: -10em;
+        bottom: 0;
+        width: 130%;
+        transform: scaleX(-1);
     }
 }
 
@@ -533,21 +519,24 @@
     z-index: 3;
 }
 
-.btn-to{
+.btn-to {
     color: $white;
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
-    &::before{
-        width: 0% ;
+
+    &::before {
+        width: 0%;
     }
 
-    &:hover{
+    &:hover {
         color: $white;
+
         &::before {
             content: "";
             height: 2px;
-            width: 20%;;
+            width: 20%;
+            ;
         }
     }
 }
