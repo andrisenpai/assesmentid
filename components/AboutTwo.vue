@@ -85,7 +85,7 @@ export default {
     width: 100%;
     height: fit-content;
     align-content: center;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 100px auto;
     padding: 0 50px;
 
 
