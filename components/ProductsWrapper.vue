@@ -136,13 +136,13 @@ export default {
     height: fit-content;
 }
 .swiper-button-next {
-        top: 35% !important;
+        top: 45% !important;
         border-radius: 50%;
         right: 20px;
         width: 40px;
         height: 40px;
         z-index: 9999 !important;
-        background-color: $primarylight;
+        background-color: $primary2;
         transition: 0.3s;
         &:hover{
             background-color: $primarylight2;
@@ -151,13 +151,13 @@ export default {
     }
 
     .swiper-button-prev {
-        top: 35% !important;
+        top: 45% !important;
         border-radius: 50%;
         width: 40px;
         left: 20px;
         height: 40px;
         z-index: 9999 !important;
-        background-color: $primarylight;
+        background-color: $primary2;
         transition: 0.3s;
         &:hover{
             background-color: $primarylight2;
