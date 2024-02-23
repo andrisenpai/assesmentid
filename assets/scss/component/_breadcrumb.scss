@@ -7,18 +7,18 @@
     & .title {
         color: $dark;
         font-weight: 600;
-        line-height: .8;
-        font-size: 72px;
-        margin-bottom: 25px;
+        line-height: .5;
+        font-size: 48px;
+        margin-bottom: 20px;
 
         @media #{$tablet-device} {
-            font-size: 60px;
+            font-size: 40px;
         }
         @media #{$large-mobile} {
-            font-size: 50px;
+            font-size: 32px;
         }
         @media #{$small-mobile} {
-            font-size: 40px;
+            font-size: 24px;
         }
     }
 

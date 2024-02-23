@@ -1,10 +1,10 @@
 <template>
     <div class="hero-slider">
-        <swiper :speed="500" :loop="true" :navigation="true" :pagination="{ clickable: true }" :effect="'fade'"
+        <swiper :speed="500" :loop="false" :navigation="true" :pagination="{ clickable: true }" :effect="'fade'"
             :autoplay="width < 992 ? false : autoplayConfig" :disableOnInteraction="width < 992 ? true : false"
-            :modules="modules">
+           >
             <template v-for="(hero, index) in heros" :key="index">
-                <swiper-slide class="slides" v-if="index < 3">
+                <swiper-slide class="slides" v-if="index < 2">
                     <div v-if="!hero.price" class="hero-slide-item"
                         :style="{ backgroundImage: `url('${hero.background}')` }" :data-id="hero.id">
                         <!-- <div class="container">
