@@ -129,13 +129,15 @@ export default {
     .card {
         margin: 30px 20px;
     }
-
+    .card-price-title{
+        font-size: 1.7rem;
+    }
     .card-body {
         position: relative;
 
         .newlabel {
             position: absolute;
-            top: -45px;
+            top: -80px;
             right: -45px;
             width: 72px;
             height: 72px;

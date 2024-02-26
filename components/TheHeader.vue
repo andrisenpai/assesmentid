@@ -9,7 +9,7 @@
                             <div class="row align-items-center">
                                 <NuxtLink to="/" key="home">
                                     <div class="row align-items-center pt-1">
-                                        <div class="col-2 col-md-4 text-end">
+                                        <div class="col-2 text-end">
                                             <div class="header-logo">
                                                 <img class="mb-2 pt-2" src="/images/logo/logo-assessment.png" alt="Header Logo">
                                             </div>
