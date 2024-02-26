@@ -8,8 +8,12 @@
                 <div class="text-wrapper">
                     <h4 class="card-ls-title">{{ order.title }}</h4>
                     <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo at accusantium reiciendis facilis temporibus suscipit architecto sapiente magnam numquam quaerat esse mollitia consequatur eius quod quidem ad, laborum nulla omnis?</p>
-                    <a class="card-ls-link text-capitalize" :href="`${order.link}`" target="_blank">{{ order.text }}</a>    
+                    <!-- <a class="card-ls-link text-capitalize" :href="`${order.link}`" target="_blank">{{ order.text }}</a>     -->
+                    <button type="button" class="card-ls-link text-capitalize" data-bs-toggle="modal" :data-bs-target="`#ModalInformation${number}`">
+                        Selengkapnya
+                    </button>
                 </div>
+
                 
             </div>
         </div>
@@ -18,7 +22,7 @@
 
 <script lang="js">
     export default {
-        props: ["order"]
+        props: ["order","number"]
     }
 </script>
 
