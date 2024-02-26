@@ -11,13 +11,14 @@
                 <!-- All Product Button Start -->
                 <div class="col-xl-2 col-md-4">
                     <div class="all-project-btn me-3">
-                        <a href="javascript:void(0)" @click="toggleShow()">Lihat Semua<i class="arrow" :class="swiperActive == true ? 'icofont-rounded-down' : 'icofont-rounded-up'"></i></a>
+                        <a href="javascript:void(0)" @click="toggleShow()">Lihat Semua<i class="arrow"
+                                :class="swiperActive == true ? 'icofont-rounded-down' : 'icofont-rounded-up'"></i></a>
                     </div>
                 </div>
                 <!-- All Product Button End -->
             </div>
         </div>
-        <div class="container-fluid" data-aos="fade-up" v-if="swiperActive == true">
+        <div class="container-fluid product-wrapper" data-aos="fade-up" v-if="swiperActive == true">
             <swiper :speed="1000" :loop="false" :navigation="swiperOptions.navigation"
                 :breakpoints="swiperOptions.breakpoints" :pagination="{
                     clickable: true,
@@ -43,12 +44,13 @@
                 </swiper-slide>
             </swiper>
             <div class="swiper-button-next"></div>
-             <div class="swiper-button-prev"></div>
+            <div class="swiper-button-prev"></div>
         </div>
         <div class="container-fluid" data-aos="fade-up" v-if="swiperActive == false">
             <div class="row row-cols-xl-2 row-cols-1 box mtn-50">
                 <!-- Single blog Start -->
-                <div class="col mt-50" data-aos="fade-up" data-aos-delay="300" :class="blog?.category" v-for="(blog, index) in blogs" :key="index">
+                <div class="col mt-50" data-aos="fade-up" data-aos-delay="300" :class="blog?.category"
+                    v-for="(blog, index) in blogs" :key="index">
                     <div id="productBlogWrapper" class="single-blog-wrap">
                         <div class="blog-thumb">
                             <nuxt-link :to="`/products/product-${blog.id}`" class="image">
@@ -114,9 +116,9 @@ export default {
             swiperActive: true
         }
     },
-    methods:{
-        toggleShow(){
-            this.swiperActive == false ? this.swiperActive = true : this.swiperActive = false 
+    methods: {
+        toggleShow() {
+            this.swiperActive == false ? this.swiperActive = true : this.swiperActive = false
         }
     }
 }
@@ -135,16 +137,19 @@ export default {
 #productBlogWrapper {
     height: fit-content;
 }
-.swiper-button-next {
+
+.product-wrapper {
+    .swiper-button-next {
         top: 45% !important;
         border-radius: 50%;
         right: 20px;
-        width: 40px;
-        height: 40px;
+        width: 50px!important;
+        height: 50px!important;
         z-index: 9999 !important;
         background-color: $primary2;
         transition: 0.3s;
-        &:hover{
+
+        &:hover {
             background-color: $primarylight2;
             transition: 0.3s;
         }
@@ -153,15 +158,17 @@ export default {
     .swiper-button-prev {
         top: 45% !important;
         border-radius: 50%;
-        width: 40px;
+        width: 50px!important;
         left: 20px;
-        height: 40px;
+        height: 50px!important;
         z-index: 9999 !important;
         background-color: $primary2;
         transition: 0.3s;
-        &:hover{
+
+        &:hover {
             background-color: $primarylight2;
             transition: 0.3s;
         }
     }
+}
 </style>
