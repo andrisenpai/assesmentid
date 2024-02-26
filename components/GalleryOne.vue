@@ -32,7 +32,7 @@
                                         <img class="fit-image" :src="`${product.imageUrl}`" alt="Product" />
                                     </nuxt-link>
                                 </div>
-                                <div class="content">
+                                <div class="content my-auto">
                                     <h4 class="subtitle">{{ product.subtitle }}</h4>
                                     <h3 class="title">
                                         <nuxt-link :to="`/products/product-${index + 1}`">{{ product.title }}</nuxt-link>
@@ -92,6 +92,7 @@ export default {
                     },
                     1200: {
                         slidesPerView: 4,
+                        slidesPerGroup: 4
                     }
                 }
             },
