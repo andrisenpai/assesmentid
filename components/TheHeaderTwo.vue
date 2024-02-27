@@ -4,7 +4,7 @@
             <div class="header-sticky">
                 <div class="container-fluid">
                     <div class="row align-items-center">
-                        <div class="col-lg-4 col-md-4 col-9">
+                        <div class="col-lg-4 col-md-5 col-9">
                             <!-- Header Logo Start -->
                             <div class="row align-items-center">
                                 <NuxtLink to="/" key="home">
@@ -21,7 +21,7 @@
                             <!-- Header Logo End -->
                         </div>
 
-                        <div class="col-lg-8 col-md-6 d-none d-md-block">
+                        <div class="col-lg-8 col-md-0 d-none d-md-block">
                             <div class="main-menu-language-wrapper">
                                 <Navigation />
 

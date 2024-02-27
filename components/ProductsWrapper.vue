@@ -20,9 +20,7 @@
         </div>
         <div class="container-fluid product-wrapper" data-aos="fade-up" v-if="swiperActive == true">
             <swiper :speed="1000" :loop="false" :navigation="swiperOptions.navigation"
-                :breakpoints="swiperOptions.breakpoints" :pagination="{
-                    clickable: true,
-                }">
+                :breakpoints="swiperOptions.breakpoints" :pagination="swiperOptions.pagination">
                 <swiper-slide v-for="(blog, index) in blogs">
                     <div id="productBlogWrapper" class="single-blog-wrap mx-3">
                         <div class="blog-thumb">
@@ -45,6 +43,7 @@
             </swiper>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="container-fluid" data-aos="fade-up" v-if="swiperActive == false">
             <div class="row row-cols-xl-2 row-cols-1 box mtn-50">
@@ -97,7 +96,11 @@ export default {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'bullets',
+                    clickable: 'true'
+                },
                 breakpoints: {
                     320: {
                         slidesPerView: 1,
@@ -139,12 +142,18 @@ export default {
 }
 
 .product-wrapper {
+
+    
+    .swiper-pagination {
+        bottom: -30px !important;
+    }
+
     .swiper-button-next {
         top: 45% !important;
         border-radius: 50%;
         right: 20px;
-        width: 50px!important;
-        height: 50px!important;
+        width: 50px !important;
+        height: 50px !important;
         z-index: 9999 !important;
         background-color: $primary2;
         transition: 0.3s;
@@ -158,9 +167,9 @@ export default {
     .swiper-button-prev {
         top: 45% !important;
         border-radius: 50%;
-        width: 50px!important;
+        width: 50px !important;
         left: 20px;
-        height: 50px!important;
+        height: 50px !important;
         z-index: 9999 !important;
         background-color: $primary2;
         transition: 0.3s;
