@@ -1,8 +1,7 @@
 <template>
     <div class="hero-slider">
         <swiper :speed="500" :loop="false" :navigation="true" :pagination="{ clickable: true }" :effect="'fade'"
-            :autoplay="width < 992 ? false : autoplayConfig" :disableOnInteraction="width < 992 ? true : false"
-           >
+            :autoplay="width < 992 ? false : autoplayConfig" :disableOnInteraction="width < 992 ? true : false">
             <template v-for="(hero, index) in heros" :key="index">
                 <swiper-slide class="slides" v-if="index < 2">
                     <div v-if="!hero.price" class="hero-slide-item"
@@ -80,7 +79,7 @@
 </template>
 
 <script lang="js">
-import { Swiper, SwiperSlide, useSwiper } from "swiper/vue"
+import { Swiper, SwiperSlide } from "swiper/vue"
 import SwiperCore, { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/core'
 SwiperCore.use([Navigation, Pagination, EffectFade])
 
@@ -96,8 +95,6 @@ export default {
         "heros"
     ],
     setup() {
-        const swiper = useSwiper();
-
         const width = ref(window.innerWidth)
         let autoplayConfig = {
             delay: 7000,
@@ -110,9 +107,9 @@ export default {
 
         return {
             modules: [Autoplay, Pagination, Navigation],
-            swiper,
             autoplayConfig, width
         };
+
     },
     data() {
         const preventSwipe = ref(false)
@@ -153,17 +150,17 @@ export default {
         top: 48% !important;
         border-radius: 50%;
         right: 10px;
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         z-index: 9999 !important;
     }
 
     .swiper-button-prev {
         top: 48% !important;
         border-radius: 50%;
-        width: 60px;
+        width: 50px;
         left: 10px;
-        height: 60px;
+        height: 50px;
         z-index: 9999 !important;
     }
 }

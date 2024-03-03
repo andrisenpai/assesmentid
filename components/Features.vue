@@ -121,20 +121,20 @@ export default {
     }
 
     .swiper-button-next {
-        top: 48% !important;
+        top: 49% !important;
         border-radius: 50%;
         right: -30px;
-        width: 60px;
-        height: 60px;
+        width: 55px;
+        height: 55px;
         z-index: 9999 !important;
     }
 
     .swiper-button-prev {
-        top: 48% !important;
+        top: 49% !important;
         border-radius: 50%;
-        width: 60px;
+        width: 55px;
         left: -30px;
-        height: 60px;
+        height: 55px;
         z-index: 9999 !important;
     }
 
