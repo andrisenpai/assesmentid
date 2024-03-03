@@ -2,8 +2,8 @@
     <div class="section-padding-bottom card-price mx-5" data-aos="fade-up" data-aos-delay="600">
         <div class="container-fluid">
             <div class="row justify-content-center align-items-center">
-                <swiper :speed="1000" :loop="false" :navigation="swiperOptions.navigation"
-                    :breakpoints="swiperOptions.breakpoints">
+                <swiper class="pb-5" :speed="1000" :loop="false" :navigation="swiperOptions.navigation"
+                    :breakpoints="swiperOptions.breakpoints" :pagination="{clickable: true}">
                     <swiper-slide class="card-container my-2 rounded" v-for="product in products">
                         <div :class="['card', product.id == 1 ? 'populer' : '']">
                             <div class="card-body">
@@ -101,18 +101,18 @@ export default {
 
 .card-price {
     .swiper-button-next {
-        top: 35% !important;
+        top: 36% !important;
         border-radius: 50%;
-        right: -25px;
+        right: -12px;
         width: 60px;
         height: 60px;
         z-index: 9999 !important;
     }
 
     .swiper-button-prev {
-        top: 35% !important;
+        top: 36% !important;
         border-radius: 50%;
-        left: -25px;
+        left: -12px;
         width: 60px;
         height: 60px;
         z-index: 9999 !important;
