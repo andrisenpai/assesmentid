@@ -25,7 +25,7 @@
     max-width: 500px;
     min-width: 200px;
     height: 300px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 20px auto;
 }
 .price-card:before {
     position: absolute;

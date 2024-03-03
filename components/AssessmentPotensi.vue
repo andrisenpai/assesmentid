@@ -45,10 +45,10 @@
                     </thead>
                     <tbody class="position-relative">
                         <tr v-for="(value, index) in dataProps" :key="index">
-                            <td :data-basis="JSON.stringify(value.attributes.bases.data)" :data-groups="JSON.stringify(value.attributes.groups.data)" class="table-item text-center table-body min-width-column">{{ value.attributes.nama }}</td>
+                            <td :data-basis="JSON.stringify(value.attributes.bases.data)" :data-groups="JSON.stringify(value.attributes.groups.data)" class="table-item text-left text-nowrap table-body min-width-column">{{ value.attributes.nama }} <span v-if="index < 10" class="badge rounded bg-warning">Baru</span></td>
                             <td :data-basis="JSON.stringify(value.attributes.bases.data)" :data-groups="JSON.stringify(value.attributes.groups.data)" class="table-item text-center table-body text-nowrap fw-bolder">{{ quantity === '>20 orang' ?  parseInt(value.attributes.harga_20_orang_keatas).toLocaleString('id-ID') : parseInt(value.attributes.harga_dibawah_20_orang).toLocaleString('id-ID') }}</td>
                             <td :data-basis="JSON.stringify(value.attributes.bases.data)" :data-groups="JSON.stringify(value.attributes.groups.data)" class="table-item text-center table-body text-nowrap">{{ value.attributes.termasuk }}</td>
-                            <td :data-basis="JSON.stringify(value.attributes.bases.data)" :data-groups="JSON.stringify(value.attributes.groups.data)" class="table-item text-center table-body text-nowrap">{{ value.attributes.hasil }}</td>
+                            <td :data-basis="JSON.stringify(value.attributes.bases.data)" :data-groups="JSON.stringify(value.attributes.groups.data)" class="table-item text-center table-body">{{ value.attributes.hasil }}</td>
                             <td :data-basis="JSON.stringify(value.attributes.bases.data)" :data-groups="JSON.stringify(value.attributes.groups.data)" class="table-item text-center table-body text-nowrap">{{ value.attributes.tidak_termasuk }}</td>
                             <td :data-basis="JSON.stringify(value.attributes.bases.data)" :data-groups="JSON.stringify(value.attributes.groups.data)" class="table-item text-center table-body text-nowrap">{{ value.attributes.proses_laporan }}</td>
                         </tr>
@@ -74,7 +74,8 @@
                     <div class="row">
                         <div class="col-12 slider-container">
                             <swiper
-                                :grid="{rows: 2,}"
+                                :grid="{rows: 2,
+                                            fill: 'row'}"
                                 :spaceBetween="5"
                                 :scrollbar="{
                                     draggable: true
@@ -85,7 +86,7 @@
                                     disableOnInteraction: false,
                                     
                                 }"
-                                :navigation="true"
+                                :navigation="swiperOptions.navigation"
                                 :breakpoints="{
                                     320: {
                                         slidesPerView: 1,
@@ -93,6 +94,7 @@
                                         slidesPerGroup: 1,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     },
                                     576: {
@@ -101,6 +103,7 @@
                                         slidesPerGroup: 2,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     },
                                     1200: {
@@ -109,6 +112,7 @@
                                         slidesPerGroup: 3,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     }
                                 }"
@@ -121,7 +125,8 @@
                                     <CardPriceShort :productProps="addition" />
                                 </swiper-slide>
                             </swiper>
-
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
                         </div>  
                     </div>
                 </div>
@@ -147,7 +152,7 @@
                             <img class="card-img" width="100%" height="100%" :src="`${config.public.clientCmsBaseUrl + assessment.background.data.attributes.formats.thumbnail.url}`" alt="">
                             <div class="card-img-overlay d-flex flex-column">
                                 <div class="card-body">
-                                    <h4 id="otherAssessmentCardTitle" class="card-title mt-0" ><nuxt-link :to="assessment.link" class="text-white assessment-title" >{{ assessment.title }}</nuxt-link></h4>
+                                    <h4 id="otherAssessmentCardTitle" class="card-title mt-0" ><nuxt-link :to="assessment.link" class="text-white assessment-title" >{{ assessment.title  }}</nuxt-link></h4>
                     				<NuxtLink :to="assessment.link" class="btn btn-sm btn-outline">{{ assessmentPotensi.btnProductDescription }}</NuxtLink>
                                 </div>
                             </div>
@@ -194,8 +199,8 @@
             return {
                 swiperOptions: {
                     navigation: {
-                        nextEl: '.tab-carousel-next',
-                        prevEl: '.tab-carousel-prev',
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-next',
                     },
                 }
             }    
@@ -381,8 +386,27 @@
     align-items: end;
     padding: 0 0 40px 0;
 }
+.swiper-button-next {
+        top: 48% !important;
+        border-radius: 50%;
+        right: -30px;
+        width: 50px;
+        height: 50px;
+        z-index: 9999 !important;
+    }
 
+    .swiper-button-prev {
+        top: 48% !important;
+        border-radius: 50%;
+        width: 50px;
+        left: -30px;
+        height: 50px;
+        z-index: 9999 !important;
+    }
 
+.table{
+    max-height: 300px!important;
+}
 .table-body{
     background-color: white;
 }
@@ -416,7 +440,8 @@
 }
 
 #tableContainer{
-    // height: 470px;
+    height: 470px;
+    overflow-y: auto;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 12px 10px -10px;
     @media #{$tablet-device, $large-mobile} {
         overflow-x: scroll;
@@ -564,7 +589,10 @@
         .btn-download {
             margin: 5px 20px;
             width: 250px;
-
+            background-color: white;
+            border: 1px solid $primary2;
+            color: $primary2;
+            border-radius: 3px;
             @media #{$large-mobile} {
                 width: 100%;
             }
@@ -623,7 +651,7 @@
  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
   background-size:120%;
   background-repeat:no-repeat;
-  background-position: center center;
+  background-position: top center;
   &:before {
     content: '';
     position: absolute;
@@ -632,12 +660,12 @@
     bottom: 0;
     left: 0;
     background: inherit;
-    -webkit-filter: grayscale(1);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    filter: grayscale(100%);}
-
+    // -webkit-filter: grayscale(1);
+    // -moz-filter: grayscale(100%);
+    // -ms-filter: grayscale(100%);
+    // -o-filter: grayscale(100%);
+    // filter: grayscale(100%);
+  }
   &:hover {
     transform: scale(0.98);
     box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
@@ -647,7 +675,7 @@
     .card-img-overlay {
         transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
         background: rgb(35,79,109);
-        background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, $primary-two 100%);
+        // background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, $primary-two 100%);
     }
   }
 }
@@ -682,7 +710,7 @@
     .card-img-overlay {
         transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
         background: rgb(35,79,109);
-        background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69,95,113,1) 100%);
+        background: linear-gradient(0deg, rgba(168, 245, 1, 0.3) 0%, rgb(25, 125, 127, 0.8) 100%);
     }
 }
 
