@@ -74,8 +74,7 @@
                     <div class="row">
                         <div class="col-12 slider-container">
                             <swiper
-                                :grid="{rows: 2,
-                                            fill: 'row'}"
+                                :grid="{rows: 2,fill: 'row'}"
                                 :spaceBetween="5"
                                 :scrollbar="{
                                     draggable: true
@@ -200,7 +199,7 @@
                 swiperOptions: {
                     navigation: {
                         nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
                     },
                 }
             }    
