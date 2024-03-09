@@ -57,6 +57,7 @@
                                         slidesPerGroup: 1,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     },
                                     576: {
@@ -65,6 +66,7 @@
                                         slidesPerGroup: 2,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     },
                                     1200: {
@@ -73,6 +75,7 @@
                                         slidesPerGroup: 3,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     }
                                 }"
@@ -313,9 +316,9 @@
 
  &.card-has-bg{
  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-  background-size:cover;
+  background-size:120%;
   background-repeat:no-repeat;
-  background-position: center center;
+  background-position: top center;
   &:before {
     content: '';
     position: absolute;
@@ -324,21 +327,22 @@
     bottom: 0;
     left: 0;
     background: inherit;
-    -webkit-filter: grayscale(1);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    filter: grayscale(100%);}
-
+    // -webkit-filter: grayscale(1);
+    // -moz-filter: grayscale(100%);
+    // -ms-filter: grayscale(100%);
+    // -o-filter: grayscale(100%);
+    // filter: grayscale(100%);
+  }
   &:hover {
     transform: scale(0.98);
     box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
+    background-size:130%;
     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
     .card-img-overlay {
         transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
         background: rgb(35,79,109);
-        background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, $primary-two 100%);
+        // background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, $primary-two 100%);
     }
   }
 }
@@ -364,7 +368,7 @@
     }
     &:hover {
         cursor: pointer;
-    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+        transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
         .card-body{
             margin-top:30px;
             transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -373,7 +377,7 @@
     .card-img-overlay {
         transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
         background: rgb(35,79,109);
-        background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69,95,113,1) 100%);
+        background: linear-gradient(0deg, rgba(168, 245, 1, 0.3) 0%, rgb(25, 125, 127, 0.8) 100%);
     }
 }
 

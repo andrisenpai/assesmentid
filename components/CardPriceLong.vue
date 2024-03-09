@@ -27,11 +27,12 @@
                     
                 
             </div>
-            <div v-else> 
+            <div class="other" v-else> 
                 <p class="price"><span>{{ parseInt(price.price).toLocaleString('id-ID') }}</span></p>
                 <ul class="pricing-offers">
                     <li v-for="feature in price.features"><i class="icofont-check-alt"></i>{{ feature.text }}</li>
                 </ul>
+                <a href="" class="btn">Beli Produk</a>
             </div>
             
         </div>
@@ -84,7 +85,18 @@
     min-width: 200px;
     margin: 0 auto 30px auto;
     min-height: 500px;
-
+    .other{
+        .btn{
+        color: white!important;
+        background-color: $primary2!important;
+        border-radius: 5px!important;
+        margin: 0 auto;
+        display: block;
+        width: 82%;
+        position: absolute;
+        bottom: 20px;
+    }
+    }
     .btn{
         color: white!important;
         background-color: $primary2!important;
@@ -92,7 +104,6 @@
         margin: 0 auto;
         display: block;
         width: 100%;
-
     }
 }
 .price-card:before {
