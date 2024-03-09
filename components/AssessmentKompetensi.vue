@@ -6,8 +6,48 @@
         </div>
 
         <div class="container-fluid">
-            <div v-if="serviceProps.attributes?.priceExt.length !== 0" class="mb-20 row justify-content-between align-items-center">
-                <div v-for="product in serviceProps.attributes?.priceExt" class="col-md-4">
+            <swiper v-if="serviceProps.attributes?.priceExt.length !== 0" :spaceBetween="5"
+                                :scrollbar="{
+                                    draggable: true
+                                }"
+                                :grid="{rows: 1,fill: 'row'}"
+                                :modules="modules"
+                                :autoplay="{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                    
+                                }"
+                                :navigation="true"
+                                :breakpoints="{
+                                    320: {
+                                        slidesPerView: 1,
+                                        spaceBetween: 5,
+                                        slidesPerGroup: 1,
+                                        grid: {
+                                            rows: 1,
+                                            fill: 'row'
+                                        }
+                                    },
+                                    576: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 10,
+                                        slidesPerGroup: 2,
+                                        grid: {
+                                            rows: 1,
+                                            fill: 'row'
+                                        }
+                                    },
+                                    1200: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 10,
+                                        slidesPerGroup: 3,
+                                        grid: {
+                                            rows: 1,
+                                            fill: 'row'
+                                        }
+                                    }
+                                }"  class="mb-20 row justify-content-between align-items-center">
+                <swiper-slide v-for="product in serviceProps.attributes?.priceExt" class="col-md-4">
                     <CardPriceLong
                      :id="product.id"
                      :title="product.name"
@@ -15,8 +55,8 @@
                      :price="''"
                      :price-ext="product"
                     />
-    			</div>
-            </div>
+    			</swiper-slide>
+            </swiper>
 
             <div v-else class="mb-20 row justify-content-between align-items-center">
                 <div v-for="product in serviceProps.attributes?.reguler_price" class="col-md-4">
@@ -60,7 +100,10 @@
                                     disableOnInteraction: false,
                                     
                                 }"
-                                :navigation="true"
+                                :navigation="{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }"
                                 :breakpoints="{
                                     320: {
                                         slidesPerView: 1,
@@ -68,6 +111,7 @@
                                         slidesPerGroup: 1,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     },
                                     576: {
@@ -76,6 +120,7 @@
                                         slidesPerGroup: 2,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     },
                                     1200: {
@@ -84,6 +129,7 @@
                                         slidesPerGroup: 3,
                                         grid: {
                                             rows: 2,
+                                            fill: 'row'
                                         }
                                     }
                                 }"
@@ -91,8 +137,10 @@
                                 <swiper-slide v-for="addition in addOnProps">
                                     <CardPriceShort :productProps="addition" />
                                 </swiper-slide>
-
+                                <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
                             </swiper>
+                            
                         </div>                  
                     </div>  
                 </div>
@@ -224,7 +272,6 @@
     background-color: $primary;
     color: $white;
 }
-
 .label-radio {
     font-weight: 600;
     color: $dark;
@@ -311,9 +358,9 @@
 
  &.card-has-bg{
  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-  background-size:cover;
+  background-size:120%;
   background-repeat:no-repeat;
-  background-position: center center;
+  background-position: top center;
   &:before {
     content: '';
     position: absolute;
@@ -322,21 +369,22 @@
     bottom: 0;
     left: 0;
     background: inherit;
-    -webkit-filter: grayscale(1);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    filter: grayscale(100%);}
-
+    // -webkit-filter: grayscale(1);
+    // -moz-filter: grayscale(100%);
+    // -ms-filter: grayscale(100%);
+    // -o-filter: grayscale(100%);
+    // filter: grayscale(100%);
+  }
   &:hover {
     transform: scale(0.98);
     box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
+    background-size:130%;
     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
     .card-img-overlay {
         transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
         background: rgb(35,79,109);
-        background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, $primary-two 100%);
+        // background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, $primary-two 100%);
     }
   }
 }
@@ -362,7 +410,7 @@
     }
     &:hover {
         cursor: pointer;
-    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+        transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
         .card-body{
             margin-top:30px;
             transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -371,11 +419,25 @@
     .card-img-overlay {
         transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
         background: rgb(35,79,109);
-        background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69,95,113,1) 100%);
+        background: linear-gradient(0deg, rgba(168, 245, 1, 0.3) 0%, rgb(25, 125, 127, 0.8) 100%);
     }
 }
 
+.swiper-button-next {
+        top: 48% !important;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        z-index: 9999 !important;
+    }
 
+    .swiper-button-prev {
+        top: 48% !important;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        z-index: 9999 !important;
+    }
 .cta-wrapper {
         height: 200px;
         width: 100%;

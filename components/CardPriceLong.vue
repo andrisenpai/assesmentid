@@ -15,6 +15,7 @@
                     <ul class="pricing-offers">
                         <li v-for="feature in priceExt.feature_1"><i class="icofont-check-alt"></i>{{ feature.text }}</li>
                     </ul>
+                    <a href="" class="btn">Beli Produk</a>
                 </div>
                 <div :class="[`price-wrapper wrapper-${1}`, 'd-none']">
                     <p class="price"><span>{{ parseInt(priceExt.price_2.number).toLocaleString('id-ID') }}</span></p>
@@ -22,6 +23,8 @@
                         <li v-for="feature in priceExt?.feature_2"><i class="icofont-check-alt"></i>{{ feature.text }}</li>
                     </ul>
                 </div>
+                    
+                
             </div>
             <div v-else> 
                 <p class="price"><span>{{ parseInt(price.price).toLocaleString('id-ID') }}</span></p>
@@ -29,6 +32,7 @@
                     <li v-for="feature in price.features"><i class="icofont-check-alt"></i>{{ feature.text }}</li>
                 </ul>
             </div>
+            
         </div>
     </section>
 </template>
@@ -71,14 +75,24 @@
 
 .price-card {
     background: #ffffff;
-    padding: 40px 35px;
+    padding: 40px 35px 50px 35px;
     position: relative;
     border-radius: 2px;
     overflow: hidden;
-    max-width: 500px;
+    // max-width: 500px;
     min-width: 200px;
     margin: 0 auto 30px auto;
-    height: 500px;
+    // height: 500px;
+
+    .btn{
+        color: white!important;
+        background-color: $primary2!important;
+        border-radius: 5px!important;
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+
+    }
 }
 .price-card:before {
     position: absolute;
@@ -108,17 +122,7 @@
     font-size: 26px;
     font-weight: 600;
 }
-.price-card .btn {
-    font-size: 11px;
-    border-radius: 100px;
-    padding: 0 25px;
-    border: 0;
-    color: #fff;
-    float: right;
-}
-.price-card .btn.btn-primary {
-    border: 0 !important;
-}
+
 .price-card.featured {
     background: #fff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
@@ -127,10 +131,6 @@
     &:hover{
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
-}
-.price-card:hover .btn {
-    background: #0cc652;
-    border-color: #0cc652;
 }
 
 .choice-wrapper{
@@ -195,11 +195,6 @@ p.price span:before {
 }
 ul li {
     list-style-type: none;
-}
-.btn.btn-mid {
-    height: 40px;
-    line-height: 40px;
-    padding: 0 20px;
 }
 
 </style>
