@@ -22,6 +22,7 @@
                     <ul class="pricing-offers">
                         <li v-for="feature in priceExt?.feature_2"><i class="icofont-check-alt"></i>{{ feature.text }}</li>
                     </ul>
+                    <a href="" class="btn">Beli Produk</a>
                 </div>
                     
                 
@@ -79,10 +80,10 @@
     position: relative;
     border-radius: 2px;
     overflow: hidden;
-    // max-width: 500px;
+    max-width: 500px;
     min-width: 200px;
     margin: 0 auto 30px auto;
-    // height: 500px;
+    min-height: 500px;
 
     .btn{
         color: white!important;
