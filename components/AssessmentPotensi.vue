@@ -410,13 +410,13 @@
     background-color: white;
 }
 
-.table-head:first-child,
-.table-body:first-child {
-    position: sticky;
-    left: 0;
-    top: 0;
-    z-index: 5;
-}
+// .table-head,
+// .table-body:first-child {
+//     position: sticky;
+//     left: 0;
+//     top: 0;
+//     z-index: 5;
+// }
 .click-col{
     background-size: cover;
     background-repeat: no-repeat;
