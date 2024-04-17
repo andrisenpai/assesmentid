@@ -67,7 +67,7 @@ export default {
         margin-top: 3em;
         height: fit-content;
         background-color: $body-bg;
-
+        z-index: 99999;
         & .cta-map {
             width: 100%;
             height: 300px;

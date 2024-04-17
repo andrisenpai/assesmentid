@@ -14,6 +14,17 @@
                 <FooterNew />
                 <FooterSimple />
             </div>
+            <!-- Modal -->
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closePopUp()"></button> -->
+            <div class="pop-up" v-show="usePopUp().popup == true">
+                
+                <div class="wrapper">
+                    <div class="pop-header"><button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close" @click="closePopUp()"></button></div>
+                    <div class="content">
+                        <img src="/images/default1.jpg" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
     </NuxtErrorBoundary>
 </template>
@@ -23,6 +34,7 @@ import Aos from 'aos'
 import { transformDate } from '~~/utils/helper'
 
 export default {
+
     async setup() {
         const loading = ref(false)
         const footerStore = useFooterStore()
@@ -123,7 +135,7 @@ export default {
         const articleProps = [] as any[]
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        
+
         articlesItem.value.articleList.forEach((value: any) => {
             articleProps.push({
                 id: value.id,
@@ -206,9 +218,17 @@ export default {
         },
         handleLoading() {
             this.loading = false
-        }
+        },
+        closePopUp() {
+            const popupStore = usePopUp()
+            popupStore.closePopUp()
+        },
+        showPopUp() {
+            const popupStore = usePopUp()
+        },
     },
     async mounted() {
+        this.showPopUp()
         try {
             Aos.init()
             window.scroll({
@@ -232,5 +252,42 @@ export default {
     }
 } 
 </script>
-
-
+<style lang="scss">
+.pop-up{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.5);
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 9999;
+    
+    .wrapper{
+        position: absolute;
+        top:40%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        width: 50vw;
+        padding: 20px;
+        .pop-header{
+            position: absolute;
+            right: 50px;
+            top: 40px;
+            .btn-close{
+                font-size: 20px;
+                background-color: white;
+                padding: 10px;
+                border-radius: 50%;
+                opacity: 0.8;
+                &:hover{
+                    opacity: 1;
+                }
+            }
+        }
+        .content{
+            width: fit-content;
+            max-height: 400px;
+        }
+    }
+}
+</style>
