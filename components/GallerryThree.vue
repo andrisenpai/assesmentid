@@ -1,17 +1,21 @@
 <template>
     <div class="gallery-container container-fluid" data-aos="fade-up" data-aos-delay="300">
-        <div class="row">
+        <div class="row text-uppercase">
             <div class="col">
-                <a href="javascript:void(0)" @click="showGallery1()"
-                    :class="gallery1 == true ? 'chooseGallery active' : 'chooseGallery'">test 1</a>
+                <div class="item" :class="gallery1 == true ? 'chooseGallery active' : 'chooseGallery'" @click="showGallery1()">
+                    <div class="tag">GALERI</div>kegiatan kami
+                </div>
+
             </div>
             <div class="col">
-                <a href="javascript:void(0)" @click="showGallery2()"
-                    :class="gallery2 == true ? 'chooseGallery active' : 'chooseGallery'">test 2</a>
+                <div class="item" :class="gallery2 == true ? 'chooseGallery active' : 'chooseGallery'"  @click="showGallery2()">
+                    <div class="tag">GALERI</div>fasilitas kami
+                </div> 
             </div>
         </div>
         <div v-if="gallery1 == true"
-            class="row g-1 g-lg-2 w-100 section-padding-bottom justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+            class="row g-1 g-lg-2 w-100 section-padding-bottom justify-content-center align-items-center"
+            data-aos="fade-up" data-aos-delay="300">
             <div v-for="photo in galleryProps.attributes.album" class="photo-container">
                 <a href="javascript:void(0)"
                     @click="showImage(config.public.clientCmsBaseUrl + photo.image.data.attributes.url)">
@@ -23,13 +27,11 @@
             </div>
         </div>
         <div v-if="gallery2 == true"
-            class="row g-1 g-lg-2 w-100 section-padding-bottom justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
-            <div v-for="(photo, index) in dataImage" class="photo-container" v-show="index < showPagemax">
-                <a href="javascript:void(0)"
-                    @click="showImage('/images/404-new.svg')">
-                    {{ index }}
-                    <div class="photo-wrapper"
-                        :style="{ backgroundImage: `url('/images/404-new.svg')` }">
+            class="row g-1 g-lg-2 w-100 section-padding-bottom justify-content-center align-items-center"
+            data-aos="fade-up" data-aos-delay="300">
+            <div v-for="(photo, index) in 12" class="photo-container" v-show="index >= showPagemin && index <= showPagemax">
+                <a href="javascript:void(0)" @click="showImage('/images/404-new.svg')">
+                    <div class="photo-wrapper" :style="{ backgroundImage: `url('/images/404-new.svg')` }">
                         <span>Sample Image Gallery</span>
                     </div>
                 </a>
@@ -60,14 +62,14 @@ let urlImage = ref()
 let gallery1 = ref(true)
 let gallery2 = ref(false)
 //pagination
-let dataImage = ref(12)
-let showPagemin = ref(0)
-let showPagemax = ref(6)
-let paginationTot = dataImage.value / showPage.value
-function next(){
+// let dataImage = ref(12)
+let showPagemin = 0
+let showPagemax = 5
+// let paginationTot = dataImage.value / showPage.value
+function next() {
 
 }
-function previous(){
+function previous() {
 
 }
 function showImage(url) {
@@ -94,12 +96,14 @@ function showGallery2() {
 </script>
 
 <style lang="scss" scoped>
-.pagination{
+.pagination {
     margin: 20px 0px;
-    a{
+
+    a {
         margin: 10px;
     }
 }
+
 .gallery-container {
     padding: 0 50px;
 
@@ -118,6 +122,13 @@ function showGallery2() {
     font-size: 20px;
     font-weight: 600;
     margin: 5px 0px;
+    &.item{
+        cursor: pointer;
+        .tag{
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
     &.active {
         background-color: $primary2;
         color: white;
