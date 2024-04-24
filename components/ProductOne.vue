@@ -11,7 +11,10 @@
                         <!-- Blog Details cntent Start -->
                         <div class="row">
                             <div class="col-md-4">
-                                <SidebarContent />
+                                <div class="inner-container h-100">
+                                    <SidebarContent />
+                                </div>
+                                
                             </div>
                             <div class="col-md-8">
                                 <div class="blog-details-content" data-aos="fade-up" data-aos-delay="300">

@@ -6,10 +6,12 @@
     <div>
         <TheHeaderTwo />
         <OffCanvasMobileMenu />
-        <Breadcrumb :activeText="data.attributes.active_link_text" :pageTitle="data.attributes.page_title" link="gallery"/>
+        <Breadcrumb :activeText="data.attributes.active_link_text" :pageTitle="'GALERI PESERTA'" link="gallery"/>
         <GalleryTwo :galleryProps="data"/>
+        <Breadcrumb2 description="Galeri kami dapat anda tinjau dalam berbagai kesempatan" pageTitle="GALERI KAMI"/>
+        <GallerryThree :galleryProps="data"/>
         <FooterNew/>
-        <FooterSimple/> 
+        <FooterSimple/>
     </div>
     </NuxtErrorBoundary>
 </template>

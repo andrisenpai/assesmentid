@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar h-100">
+    <div class="sidebar">
         <div class="menu-title">
             Pilihan Produk Kami
         </div>
@@ -49,7 +49,6 @@ export default {
 </script>
 <style lang="scss">
 .sidebar {
-    margin-top: 68px !important;
     border-right: 5px solid lightgray;
     &::after {
         border: 1px solid black;
