@@ -101,7 +101,8 @@ function closeImage() {
             height: 0px;
             width: 100%;
             bottom: 0;
-            background-color: rgba($color: #000000, $alpha: 0.4);
+            background: rgb(255, 255, 255);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, rgba(25, 125, 127, 1) 85%);
             transition: $transition-base;
         }
 

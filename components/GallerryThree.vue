@@ -2,15 +2,17 @@
     <div class="gallery-container container-fluid" data-aos="fade-up" data-aos-delay="300">
         <div class="row text-uppercase">
             <div class="col">
-                <div class="item" :class="gallery1 == true ? 'chooseGallery active' : 'chooseGallery'" @click="showGallery1()">
+                <div class="item" :class="gallery1 == true ? 'chooseGallery active' : 'chooseGallery'"
+                    @click="showGallery1()">
                     <div class="tag">GALERI</div>kegiatan kami
                 </div>
 
             </div>
             <div class="col">
-                <div class="item" :class="gallery2 == true ? 'chooseGallery active' : 'chooseGallery'"  @click="showGallery2()">
+                <div class="item" :class="gallery2 == true ? 'chooseGallery active' : 'chooseGallery'"
+                    @click="showGallery2()">
                     <div class="tag">GALERI</div>fasilitas kami
-                </div> 
+                </div>
             </div>
         </div>
         <div v-if="gallery1 == true"
@@ -29,7 +31,8 @@
         <div v-if="gallery2 == true"
             class="row g-1 g-lg-2 w-100 section-padding-bottom justify-content-center align-items-center"
             data-aos="fade-up" data-aos-delay="300">
-            <div v-for="(photo, index) in 12" class="photo-container" v-show="index >= showPagemin && index <= showPagemax">
+            <div v-for="(photo, index) in dataImage" class="photo-container"
+                v-show="(index + 1) >= showPagemin && (index + 1) <= showPagemax">
                 <a href="javascript:void(0)" @click="showImage('/images/404-new.svg')">
                     <div class="photo-wrapper" :style="{ backgroundImage: `url('/images/404-new.svg')` }">
                         <span>Sample Image Gallery</span>
@@ -62,9 +65,9 @@ let urlImage = ref()
 let gallery1 = ref(true)
 let gallery2 = ref(false)
 //pagination
-// let dataImage = ref(12)
-let showPagemin = 0
-let showPagemax = 5
+let dataImage = 12
+let showPagemin = 7
+let showPagemax = 12
 // let paginationTot = dataImage.value / showPage.value
 function next() {
 
@@ -122,13 +125,16 @@ function showGallery2() {
     font-size: 20px;
     font-weight: 600;
     margin: 5px 0px;
-    &.item{
+
+    &.item {
         cursor: pointer;
-        .tag{
+
+        .tag {
             font-size: 16px;
             font-weight: 400;
         }
     }
+
     &.active {
         background-color: $primary2;
         color: white;
@@ -194,7 +200,8 @@ function showGallery2() {
             height: 0px;
             width: 100%;
             bottom: 0;
-            background-color: rgba($color: #000000, $alpha: 0.4);
+            background: rgb(255, 255, 255);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, rgba(25, 125, 127, 1) 85%);
             transition: $transition-base;
         }
 
